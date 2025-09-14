@@ -17,15 +17,15 @@ const CrisisEventList = React.memo(({ events, selectedEvent, onSelectEvent }) =>
     const urgencyColorClass = getUrgencyColor(event.analysis?.urgency);
     const isSelected = selectedEvent?.id === event.id;
 
-    const renderEventHeader = () => 
+    const renderEventHeader = () =>
       React.createElement('div', { className: 'event-header' },
         React.createElement('div', { className: 'event-type' },
           React.createElement('span', { className: 'event-icon' }, crisisType.icon),
-          React.createElement('span', { className: 'event-type-text' }, 
+          React.createElement('span', { className: 'event-type-text' },
             event.type.replace('_', ' ')
           )
         ),
-        React.createElement('span', { 
+        React.createElement('span', {
           className: `urgency-badge ${getUrgencyClass(event.analysis?.urgency)}`
         }, `Urgency: ${event.analysis?.urgency || 'N/A'}/10`)
       );
@@ -36,7 +36,7 @@ const CrisisEventList = React.memo(({ events, selectedEvent, onSelectEvent }) =>
           React.createElement('span', { className: 'event-location' }, `📍 ${event.location}`),
           React.createElement('span', { className: 'event-time' }, `🕒 ${format(new Date(event.timestamp), 'HH:mm')}`)
         ),
-        event.verified && React.createElement('span', { 
+        event.verified && React.createElement('span', {
           className: 'event-verified'
         }, '✓ Verified')
       );
@@ -47,7 +47,7 @@ const CrisisEventList = React.memo(({ events, selectedEvent, onSelectEvent }) =>
       onClick: () => onSelectEvent(event)
     },
       renderEventHeader(),
-      React.createElement('p', { 
+      React.createElement('p', {
         className: 'event-description'
       }, event.text),
       renderEventMeta(),
@@ -65,7 +65,7 @@ const CrisisEventList = React.memo(({ events, selectedEvent, onSelectEvent }) =>
         `Showing ${events.length} events, sorted by urgency`
       )
     ),
-    React.createElement('div', { 
+    React.createElement('div', {
       className: 'event-list-content'
     }, events.map(renderEvent))
   );

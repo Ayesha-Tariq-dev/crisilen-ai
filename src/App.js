@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { dataAggregator } from './services/dataAggregator';
-import Dashboard from './components/Dashboard';
-import ErrorBoundary from './components/ErrorBoundary';
-import LoadingState from './components/LoadingState';
+import { dataAggregator } from './services/dataAggregator.js';
+import Dashboard from './components/Dashboard.js';
+import ErrorBoundary from './components/ErrorBoundary.js';
+import LoadingState from './components/LoadingState.js';
 import './App.css';
 
 function App() {

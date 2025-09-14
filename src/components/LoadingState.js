@@ -10,9 +10,11 @@ const LoadingState = () => {
                     <div className="loading-spinner"></div>
                 </div>
                 <h2 className="loading-title">Loading Crisis Data</h2>
-                <p className="loading-message">
-                    Fetching real-time crisis information and generating insights...
-                </p>
+                <div className="loading-messages">
+                    <p className="loading-message">Fetching real-time crisis information...</p>
+                    <p className="loading-message">Processing emergency data...</p>
+                    <p className="loading-message">Generating crisis insights...</p>
+                </div>
             </div>
         </div>
     );

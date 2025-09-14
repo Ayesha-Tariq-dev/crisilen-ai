@@ -27,12 +27,12 @@ const CrisisDetails = React.memo(({ crisis }) => {
   const urgencyClass = analysis?.urgency >= 8
     ? 'urgency-critical'
     : analysis?.urgency >= 6
-    ? 'urgency-high'
-    : 'urgency-medium';
+      ? 'urgency-high'
+      : 'urgency-medium';
 
   const crisisType = crisisTypes[type] || crisisTypes.other;
 
-  const renderResourceItem = (resource, index) => 
+  const renderResourceItem = (resource, index) =>
     React.createElement('li', { key: index, className: 'resource-item' },
       React.createElement(ExclamationTriangleIcon, { className: 'resource-icon' }),
       resource

@@ -9,7 +9,7 @@ const createMarkerIcon = (type, urgency) => {
   const crisisType = crisisTypes[type] || crisisTypes.other;
   const markerClass = urgency >= 8 ? 'marker-large' : 'marker-normal';
   const pulseClass = urgency >= 8 ? 'marker-pulse' : '';
-  
+
   return divIcon({
     html: `
       <div class="map-marker ${markerClass}">
@@ -37,11 +37,11 @@ const CrisisMap = React.memo(({ events, onSelectEvent }) => {
       eventHandlers: {
         click: () => onSelectEvent(event)
       }
-    }, 
+    },
       React.createElement(Popup, null,
         React.createElement('div', { className: 'popup-container' },
           React.createElement('div', { className: 'popup-header' },
-            React.createElement('span', { className: 'popup-icon' }, 
+            React.createElement('span', { className: 'popup-icon' },
               crisisTypes[event.type]?.icon || '⚠️'
             ),
             event.analysis && React.createElement('span', {
@@ -56,7 +56,7 @@ const CrisisMap = React.memo(({ events, onSelectEvent }) => {
           ),
           React.createElement('div', { className: 'text-xs text-gray-500' },
             React.createElement('div', null, `📍 ${event.location}`),
-            event.verified && React.createElement('div', { className: 'text-green-600' }, 
+            event.verified && React.createElement('div', { className: 'text-green-600' },
               '✓ Verified Source'
             )
           ),

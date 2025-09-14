@@ -62,8 +62,24 @@ const TabButton = React.memo(({ label, isActive, onClick }) =>
 const Dashboard = React.memo(({ crisisData, loading }) => {
   const [activeTab, setActiveTab] = useState('map');
 
-  const events = useMemo(() => crisisData?.events || [], [crisisData]);
-  const insights = useMemo(() => crisisData?.insights || {}, [crisisData]);
+  const events = useMemo(() => {
+    // Handle both direct events array and nested events structure
+    return Array.isArray(crisisData) ? crisisData : (crisisData?.events || []);
+  }, [crisisData]);
+
+  // If crisisData is an array, it's the fallback data
+  const insights = useMemo(() => {
+    if (Array.isArray(crisisData)) {
+      return crisisData.reduce((acc, event) => {
+        if (event.id) {
+          acc[event.id] = event.analysis;
+        }
+        return acc;
+      }, {});
+    }
+    return crisisData?.insights || {};
+  }, [crisisData]);
+
   const metadata = useMemo(() => crisisData?.metadata || {}, [crisisData]);
 
   const priorityEvents = useMemo(() =>

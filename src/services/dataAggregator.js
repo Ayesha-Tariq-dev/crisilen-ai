@@ -1,7 +1,7 @@
 import { NewsService } from './newsService';
 import { RedditService } from './redditService';
 import { OpenAIService } from './openaiService';
-import { sampleCrisisData } from '../data/sampleCrisisData';
+import { sampleCrisisData, mockAnalysisResults, mockInsightsSummary } from '../data/sampleCrisisData';
 
 class DataAggregator {
   constructor() {
@@ -19,13 +19,19 @@ class DataAggregator {
     try {
       if (useMockData) {
         console.log('📚 Using mock crisis data');
+        // Apply mock analysis results to the sample data
+        const enrichedData = sampleCrisisData.map(event => ({
+          ...event,
+          analysis: mockAnalysisResults[event.id]
+        }));
         return {
-          data: sampleCrisisData,
+          data: enrichedData,
           metadata: {
             lastUpdate: new Date().toISOString(),
             processingTimeMs: 500,
             sources: ['mock-data']
-          }
+          },
+          insights: mockInsightsSummary // Include mock insights when using fallback data
         };
       }
 

@@ -1,5 +1,8 @@
 .crisis-details {
-  padding: 1.5rem;.analysis-section {
+  padding: 1.5rem;
+}
+
+.analysis-section {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid #e5e7eb;
@@ -125,7 +128,8 @@
   color: #6b7280;
 }
 
-.metric-item {color: #ffffff;
+.metric-item {
+  color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }

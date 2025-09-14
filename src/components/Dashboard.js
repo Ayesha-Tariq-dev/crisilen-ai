@@ -208,47 +208,47 @@ const Dashboard = React.memo(({ crisisData, loading }) => {
       Icon: ExclamationCircleIcon,
       label: 'Active Crises',
       value: events.length,
-      iconColor: 'text-red-500'
+      iconColor: 'icon-critical'
     },
     {
       Icon: ChartBarIcon,
       label: 'Average Urgency',
       value: (events.reduce((acc, e) => acc + (e.analysis?.urgency || 0), 0) / events.length || 0).toFixed(1),
-      iconColor: 'text-blue-500'
+      iconColor: 'icon-info'
     },
     {
       Icon: MapIcon,
       label: 'Affected Regions',
       value: new Set(events.map(e => e.location)).size,
-      iconColor: 'text-green-500'
+      iconColor: 'icon-success'
     },
     {
       Icon: ClockIcon,
       label: 'Processing Time',
       value: metadata.processingTimeMs ? `${(metadata.processingTimeMs / 1000).toFixed(1)}s` : 'N/A',
-      iconColor: 'text-purple-500'
+      iconColor: 'icon-accent'
     }
   ];
 
-  return React.createElement('div', { className: 'container mx-auto px-4 py-6' },
-    React.createElement('div', { className: 'flex justify-between items-center mb-6' },
-      React.createElement('h1', { className: 'text-2xl font-bold text-gray-900' }, 'CrisisLens AI Dashboard'),
-      React.createElement('div', { className: 'flex items-center space-x-4' },
-        React.createElement('span', { className: 'text-sm text-gray-500' },
+  return React.createElement('div', { className: 'dashboard-container' },
+    React.createElement('div', { className: 'dashboard-header' },
+      React.createElement('h1', { className: 'dashboard-title' }, 'CrisisLens AI Dashboard'),
+      React.createElement('div', { className: 'dashboard-controls' },
+        React.createElement('span', { className: 'last-update' },
           `Last updated: ${metadata.lastUpdate ? format(new Date(metadata.lastUpdate), 'HH:mm:ss') : 'N/A'}`
         ),
         React.createElement('button', {
           onClick: () => window.location.reload(),
-          className: 'px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'
+          className: 'refresh-button'
         }, 'Refresh')
       )
     ),
-    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6' },
+    React.createElement('div', { className: 'stats-grid' },
       stats.map((stat, index) =>
         React.createElement(StatsCard, { key: index, ...stat })
       )
     ),
-    React.createElement('div', { className: 'flex space-x-4 mb-6' },
+    React.createElement('div', { className: 'tabs-container' },
       React.createElement(TabButton, {
         label: 'Crisis Map',
         isActive: activeTab === 'map',
@@ -260,7 +260,7 @@ const Dashboard = React.memo(({ crisisData, loading }) => {
         onClick: () => setActiveTab('insights')
       })
     ),
-    React.createElement('div', { className: 'bg-white rounded-lg shadow-lg p-6' },
+    React.createElement('div', { className: 'content-container' },
       renderContent()
     )
   );

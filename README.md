@@ -1,70 +1,245 @@
-# Getting Started with Create React App
+"# CrisisLens AI - Emergency Response Intelligence Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CrisisLens AI Banner](./public/banner.png)
 
-## Available Scripts
+CrisisLens AI is an intelligent crisis monitoring platform that transforms unstructured disaster data into real-time actionable insights for emergency responders. It combines live API data with reliable preloaded datasets to ensure consistent performance during demonstrations and real-world scenarios.
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+### Smart Data Ingestion
+- Multi-source data monitoring (social media, news feeds, uploaded content)
+- Real-time processing of text, images, and audio
+- Hybrid approach combining live APIs with preloaded datasets
+- Automatic data validation and deduplication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧠 AI-Powered Analysis
+- Real-time sentiment and urgency analysis
+- Automated damage assessment from images
+- Pattern detection for emerging crisis hotspots
+- Multi-language processing and translation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 📊 Executive Dashboard
+- Priority-ranked incident reports
+- AI-generated situation summaries
+- Visual damage assessment maps
+- Resource allocation recommendations
 
-### `npm test`
+### ⚡ Smart Alerting
+- Proactive notifications for high-priority events
+- Automated resource deployment suggestions
+- Multi-language crisis communication templates
+- Real-time stakeholder updates
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏗️ Technical Architecture
 
-### `npm run build`
+### System Overview
+```
+Data Sources → OpenAI APIs → Intelligence Layer → Dashboard
+     ↓              ↓             ↓              ↓
+Social Media → GPT-4 Text → Crisis Analysis → Executive Summary
+Images/Video → GPT Vision → Damage Assessment → Priority Alerts
+Audio Reports → Whisper → Transcription → Searchable Database
+Requirements → DALL-E → Visual Reports → Situation Maps
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tech Stack
+- **Frontend**: React.js with Tailwind CSS
+- **Data Visualization**: Chart.js & React-Leaflet
+- **AI Integration**: OpenAI API (GPT-4, Vision, Whisper, DALL-E)
+- **State Management**: React Hooks + Context
+- **Real-time Updates**: WebSocket integration
+- **Styling**: Tailwind CSS + HeadlessUI
+- **Social Media Integration**: Twitter API v2, Reddit API
+- **News Integration**: News API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+\`\`\`
+crisislen-ai/
+├── src/
+│   ├── components/           # React components
+│   │   ├── Dashboard.jsx    # Main dashboard interface
+│   │   ├── CrisisMap.jsx    # Interactive crisis mapping
+│   │   ├── CrisisDetails.jsx # Individual crisis view
+│   │   ├── MetricsPanel.jsx # Analytics and insights
+│   │   └── CrisisEventList.jsx # Event listing
+│   ├── services/            # Core services
+│   │   ├── dataAggregator.js    # Data collection/processing
+│   │   ├── newsService.js       # News API integration
+│   │   ├── redditService.js     # Reddit data handling
+│   │   ├── openaiService.js     # AI analysis pipeline
+│   │   └── insightsService.js   # Insights generation
+│   ├── data/               # Sample/static data
+│   │   └── sampleCrisisData.js  # Preloaded datasets
+│   └── assets/            # Static assets
+├── public/               # Public assets
+└── .env                 # Environment configuration
+\`\`\`
 
-### `npm run eject`
+## 🚀 Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- Node.js >= 18.0.0
+- NPM >= 9.0.0
+- OpenAI API key
+- News API key
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
+\`\`\`bash
+git clone https://github.com/Noah-Wallace/crisislen.git
+cd crisislen-ai
+\`\`\`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install dependencies:
+\`\`\`bash
+npm install
+\`\`\`
 
-## Learn More
+3. Configure environment variables:
+\`\`\`env
+# OpenAI API Configuration
+VITE_OPENAI_API_KEY=your_openai_api_key
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# News API Configuration
+VITE_NEWS_API_KEY=your_news_api_key
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Twitter API Configuration
+VITE_TWITTER_API_KEY=your_twitter_api_key
+VITE_TWITTER_API_SECRET=your_twitter_api_secret
+VITE_TWITTER_BEARER_TOKEN=your_twitter_bearer_token
 
-### Code Splitting
+# Optional: Development Mode (uses mock data when true)
+VITE_USE_MOCK_DATA=false
+\`\`\`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. Start the development server:
+\`\`\`bash
+npm run dev
+\`\`\`
 
-### Analyzing the Bundle Size
+## 🔧 Core Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Dashboard.jsx
+The main interface orchestrating all components and data flow. Features:
+- Real-time data updates
+- Crisis event visualization
+- Analytics and insights display
 
-### Making a Progressive Web App
+### CrisisMap.jsx
+Interactive map showing crisis locations and severity:
+- Real-time event markers
+- Severity-based visualization
+- Click-through to detailed information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### CrisisDetails.jsx
+Detailed view of individual crisis events:
+- Comprehensive event information
+- AI analysis results
+- Resource requirements
+- Stakeholder information
 
-### Advanced Configuration
+### MetricsPanel.jsx
+Analytics and insights visualization:
+- Crisis type distribution
+- Urgency trends
+- Resource allocation metrics
+- AI-generated recommendations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🛠️ Services
 
-### Deployment
+### baseService.js
+Core service functionality and utilities:
+- Retry mechanism for API calls
+- Location extraction from text
+- Crisis type detection
+- Urgency score calculation
+- Text sanitization
+- Common utilities for all services
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### dataAggregator.js
+Central data management service:
+- Multi-source data collection
+- Data deduplication
+- Priority scoring
+- Real-time updates
 
-### `npm run build` fails to minify
+### twitterService.js
+Twitter API v2 integration:
+- Real-time crisis tweet monitoring
+- Verified source filtering
+- Geo-location extraction
+- Crisis relevance scoring
+- Mock data fallback for demos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### newsService.js
+News API integration:
+- Real-time news monitoring
+- Article relevance filtering
+- Location extraction
+- Crisis classification
+
+### redditService.js
+Reddit data processing:
+- Subreddit monitoring
+- Crisis-related post filtering
+- Sentiment analysis
+- Location extraction
+
+### openaiService.js
+AI analysis pipeline:
+- Text analysis (GPT-4)
+- Image analysis (Vision API)
+- Audio processing (Whisper)
+- Visual generation (DALL-E)
+
+### insightsService.js
+Insights and recommendations:
+- Trend analysis
+- Pattern detection
+- Resource optimization
+- Executive summaries
+
+## 📊 Data Sources
+
+### Live APIs
+- News API (news articles)
+- Reddit API (social media)
+- OpenAI APIs (AI analysis)
+
+### Preloaded Datasets
+- Historical crisis events
+- Emergency response patterns
+- Resource allocation templates
+- Crisis type classifications
+
+## 🔒 Security & Privacy
+
+- API key protection
+- Data anonymization
+- Rate limiting
+- Error handling
+
+## 🚀 Deployment
+
+The application is configured for deployment on Vercel:
+
+1. Connect your GitHub repository
+2. Configure environment variables
+3. Deploy with automatic CI/CD
+
+## 📈 Future Enhancements
+
+1. Additional data sources:
+   - Twitter API integration
+   - Emergency services APIs
+   - Satellite imagery
+
+2. Advanced features:
+   - Predictive analytics
+   - Resource optimization
+   - Multi-agency coordination
+   - Mobile applications
+
+
